@@ -1,0 +1,54 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+env/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.next-dev.*.log
+
+# Data and logs
+object-storage/
+.runtime/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Testing
+.pytest_cache/
+coverage/
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db

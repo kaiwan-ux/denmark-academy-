@@ -1,0 +1,51 @@
+﻿services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: denmark_academy
+      POSTGRES_USER: denmark
+      POSTGRES_PASSWORD: denmark
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U denmark -d denmark_academy"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  qdrant:
+    image: qdrant/qdrant:v1.18.0
+    ports:
+      - "6335:6333"
+      - "6336:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.api
+    env_file:
+      - ../../.env
+    environment:
+      DATABASE_URL: postgresql://denmark:denmark@postgres:5432/denmark_academy
+      QDRANT_URL: http://qdrant:6333
+      LOCAL_OBJECT_STORAGE_PATH: /data/object-storage
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../..:/app
+      - ../../object-storage:/data/object-storage
+      - ../..:/data/material:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+
+
+volumes:
+  postgres_data:
+  qdrant_data:

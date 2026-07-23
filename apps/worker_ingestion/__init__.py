@@ -1,0 +1,2 @@
+"""Ingestion worker package."""
+

@@ -1,0 +1,42 @@
+# Environment files with secrets
+.env
+*.env.local
+.env.production
+.env.*.local
+
+# Python cache
+venv/
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.next-dev.*.log
+
+# Data directories
+object-storage/
+.runtime/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Database dumps and backups
+*.sql
+!packages/denmark_academy/db/migrations/
+!packages/denmark_academy/db/migrations/*.sql
+*.dump
+*.backup
+
+# Logs
+*.log
+*.err.log
+*.out.log

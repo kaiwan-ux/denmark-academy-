@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "denmark-academy"
+version = "0.1.0"
+description = "Phase 1 backend foundation for Denmark Academy"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic>=2.8.0",
+  "pydantic-settings>=2.4.0",
+  "asyncpg>=0.29.0",
+  "psycopg[binary]>=3.2.0",
+  "qdrant-client>=1.10.0",
+  "pdfplumber>=0.11.0",
+  "pypdf>=4.3.0",
+  "python-multipart>=0.0.9",
+  "feedparser>=6.0.11",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "ruff>=0.5.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["packages"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+
+[tool.setuptools.packages.find]
+where = ["packages"]
+include = ["denmark_academy*"]
+
