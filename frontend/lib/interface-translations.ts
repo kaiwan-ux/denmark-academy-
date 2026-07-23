@@ -1,6 +1,7 @@
 export const interfaceTranslations: Record<string, string> = {
   "Home": "Forside",
   "Reading": "Læsning",
+  "Audio": "Lyd",
   "Past papers": "Tidligere prøver",
   "Past Papers": "Tidligere prøver",
   "Smart practice": "Smart træning",
